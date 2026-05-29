@@ -3,6 +3,7 @@ import { v4 as uuid } from 'uuid';
 import MapView from '../components/MapView';
 import type { Hunt, Stop } from '../types';
 import { saveHunt, loadAllHunts, deleteHunt } from '../utils/storage';
+import { encodeHunt } from '../App';
 
 interface EditStop extends Stop {}
 
@@ -130,8 +131,7 @@ export default function AdminPage({ onNavigate }: { onNavigate: (page: string, i
   };
 
   const share = (hunt: Hunt) => {
-    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(hunt))));
-    const url = `${window.location.origin}${window.location.pathname}#hunt=${encoded}`;
+    const url = `${window.location.origin}${window.location.pathname}#hunt=${encodeHunt(hunt)}`;
     if (navigator.share) {
       navigator.share({ title: hunt.name, url });
     } else {

@@ -6,12 +6,13 @@ import { loadHunt } from '../utils/storage';
 import type { Hunt } from '../types';
 
 interface Props {
-  huntId: string;
+  huntId?: string;
+  huntData?: Hunt;
   onNavigate: (page: string) => void;
 }
 
-export default function PlayerPage({ huntId, onNavigate }: Props) {
-  const [hunt, setHunt] = useState<Hunt | null>(null);
+export default function PlayerPage({ huntId, huntData, onNavigate }: Props) {
+  const [hunt, setHunt] = useState<Hunt | null>(huntData ?? null);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [arrived, setArrived] = useState(false);
   const [finished, setFinished] = useState(false);
@@ -20,10 +21,11 @@ export default function PlayerPage({ huntId, onNavigate }: Props) {
   const { position, error } = useGeolocation();
 
   useEffect(() => {
+    if (huntData) return;
+    if (!huntId) return;
     const h = loadHunt(huntId);
-    if (!h) return;
-    setHunt(h);
-  }, [huntId]);
+    if (h) setHunt(h);
+  }, [huntId, huntData]);
 
   useEffect(() => {
     if (!hunt || !position || arrivedRef.current) return;

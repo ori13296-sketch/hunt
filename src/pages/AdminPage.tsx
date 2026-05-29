@@ -115,7 +115,8 @@ export default function AdminPage({ onNavigate }: { onNavigate: (page: string, i
                       </button>
                       <button
                         onClick={() => {
-                          const url = `${window.location.origin}?play=${hunt.id}`;
+                          const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(hunt))));
+                          const url = `${window.location.origin}${window.location.pathname}#hunt=${encoded}`;
                           navigator.clipboard.writeText(url);
                           alert('הקישור הועתק!');
                         }}

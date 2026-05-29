@@ -92,7 +92,7 @@ export default function PlayerPage({ huntId, huntData, onNavigate }: Props) {
   return (
     <div className="flex flex-col h-svh" dir="rtl">
       {/* Header */}
-      <div className="bg-indigo-600 text-white px-4 py-3 shrink-0">
+      <div className="bg-indigo-600 text-white px-4 pt-[calc(0.75rem+env(safe-area-inset-top))] pb-3 shrink-0">
         <div className="flex items-center justify-between">
           <div className="min-w-0">
             <p className="font-semibold text-base truncate">{hunt.name}</p>
@@ -136,7 +136,7 @@ export default function PlayerPage({ huntId, huntData, onNavigate }: Props) {
 
       {/* Bottom panel */}
       {panelOpen && (
-        <div className="bg-white border-t shadow-2xl shrink-0" dir="rtl">
+        <div className="bg-white border-t shadow-2xl shrink-0 pb-[env(safe-area-inset-bottom)]" dir="rtl">
           {arrived ? (
             <div className="p-5">
               <div className="flex items-center gap-3 mb-3">

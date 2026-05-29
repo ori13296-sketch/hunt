@@ -144,7 +144,7 @@ export default function AdminPage({ onNavigate }: { onNavigate: (page: string, i
   if (view === 'list') {
     return (
       <div className="min-h-screen bg-gray-50" dir="rtl">
-        <div className="sticky top-0 bg-white border-b px-4 py-4 flex items-center justify-between z-10">
+        <div className="sticky top-0 bg-white border-b px-4 pt-[calc(1rem+env(safe-area-inset-top))] pb-4 flex items-center justify-between z-10">
           <button onClick={() => onNavigate('home')} className="text-gray-400 text-2xl leading-none">←</button>
           <h1 className="text-lg font-bold text-gray-800">הצידים שלי</h1>
           <button
@@ -201,7 +201,7 @@ export default function AdminPage({ onNavigate }: { onNavigate: (page: string, i
   return (
     <div className="flex flex-col h-svh" dir="rtl">
       {/* Top bar */}
-      <div className="bg-white border-b px-4 py-3 flex items-center gap-3 shrink-0">
+      <div className="bg-white border-b px-4 pt-[calc(0.75rem+env(safe-area-inset-top))] pb-3 flex items-center gap-3 shrink-0">
         <button onClick={() => setView('list')} className="text-gray-400 text-2xl leading-none">←</button>
         <input
           value={huntName}
@@ -274,7 +274,7 @@ export default function AdminPage({ onNavigate }: { onNavigate: (page: string, i
       </div>
 
       {/* Bottom tabs */}
-      <div className="bg-white border-t grid grid-cols-2 shrink-0">
+      <div className="bg-white border-t grid grid-cols-2 shrink-0 pb-[env(safe-area-inset-bottom)]">
         <button
           onClick={() => setTab('map')}
           className={`py-3.5 text-sm font-medium ${tab === 'map' ? 'text-indigo-600 border-t-2 border-indigo-600 -mt-px' : 'text-gray-400'}`}

@@ -4,7 +4,7 @@ interface Props {
 
 export default function HomePage({ onNavigate }: Props) {
   return (
-    <div className="min-h-svh bg-gradient-to-b from-indigo-600 to-indigo-900 flex flex-col items-center justify-center p-6" dir="rtl">
+    <div className="min-h-svh bg-gradient-to-b from-indigo-600 to-indigo-900 flex flex-col items-center justify-center p-6 pt-[calc(1.5rem+env(safe-area-inset-top))] pb-[calc(1.5rem+env(safe-area-inset-bottom))]" dir="rtl">
       <div className="text-center mb-12">
         <div className="text-8xl mb-5">🗺️</div>
         <h1 className="text-4xl font-bold text-white mb-2">ציד האוצר</h1>
